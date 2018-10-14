@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "CCActionSheet.h"
 
+#define Alert(msg) [[[UIAlertView alloc] initWithTitle:nil message:(msg) delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil,nil] show]
+
 @interface ViewController ()
 
 @end
@@ -34,12 +36,15 @@
 #pragma mark - onClick
 //! 点击按钮
 - (void)onClickButton {
+    
     CCActionSheet * sheet = [[CCActionSheet alloc] initWithTitle:@"这是一个很长很长很长很长很长很长很长很长很长很长的标题"];
-    [sheet cc_addActionWithTitle:@"变" handle:^(UIButton *sender) {
+    [sheet cc_addActionWithTitle:@"按钮" handle:^(UIButton *sender) {
         NSLog(@"略略略");
+        Alert(@"点击");
     }];
     [sheet cc_addActionWithTitle:@"按钮2" style:CCActionButtonStyleDestructive handle:^(UIButton *sender) {
         NSLog(@"嗯哼");
+        Alert(@"点击按钮2");
     }];
     [sheet cc_showInView:self.view.window];
 }
